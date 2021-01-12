@@ -6,9 +6,13 @@ import kotlinx.coroutines.channels.Channel
 
 fun main() = runBlocking {
 
-
 }
 
+suspend fun printSomethingWithDelay() {
+    println("start")
+    delay(1000)
+    println("end")
+}
 
 
 //
