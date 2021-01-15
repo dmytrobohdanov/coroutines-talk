@@ -6,21 +6,24 @@ import kotlinx.coroutines.channels.Channel
 
 fun main() = runBlocking {
 
-    val job = GlobalScope.launch(start = CoroutineStart.LAZY) {
+    val job = GlobalScope.launch() {
+//    val job = GlobalScope.launch(start = CoroutineStart.LAZY) {
+        println("start - 1")
         delay(1200L)
-        println("1")
+        println("end - 1")
     }
 
-    val job2 = GlobalScope.launch(start = CoroutineStart.LAZY) {
+//    val job2 = GlobalScope.launch(start = CoroutineStart.LAZY) {
+    val job2 = GlobalScope.launch() {
+        println("start - 2")
         delay(1000L)
-        println("2")
+        println("end - 2")
     }
 
-    println("3")
+    println("before join")
     job.join()
-    println("4")
     job2.join()
-    println("5")
+    println("after join")
 }
 
 
