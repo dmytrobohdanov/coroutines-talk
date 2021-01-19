@@ -19,7 +19,7 @@ fun main() = runBlocking {
     return@runBlocking
 }
 
-suspend fun performSomeWork(): String {
+private suspend fun performSomeWork(): String {
     println("work started")
 //    Thread.sleep(500)
     delay(500)
@@ -28,14 +28,8 @@ suspend fun performSomeWork(): String {
     return "our result is this string"
 }
 
-suspend fun printSomethingWithDelay() {
+private suspend fun printSomethingWithDelay() {
     println("start")
     delay(1000)
     println("end")
 }
-
-
-//
-//fun currentTime(): Long {
-//    return System.currentTimeMillis()
-//}
