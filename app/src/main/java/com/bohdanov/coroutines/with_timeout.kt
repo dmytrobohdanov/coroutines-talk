@@ -7,6 +7,7 @@ fun main() = runBlocking {
     launch(Dispatchers.Default) {
         try {
             val someResult = withTimeout(1000) {
+
                 performSomeWork()
             }
 
@@ -21,8 +22,8 @@ fun main() = runBlocking {
 
 private suspend fun performSomeWork(): String {
     println("work started")
-//    Thread.sleep(500)
-    delay(500)
+    Thread.sleep(1500)
+//    delay(1500)
     println("work finished")
 
     return "our result is this string"
