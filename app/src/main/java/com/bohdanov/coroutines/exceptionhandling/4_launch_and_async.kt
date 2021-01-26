@@ -1,4 +1,4 @@
-package com.lukaslechner.coroutineusecasesonandroid.playground.exceptionhandling
+package com.bohdanov.coroutines.exceptionhandling
 
 import kotlinx.coroutines.*
 

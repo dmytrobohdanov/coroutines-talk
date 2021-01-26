@@ -1,4 +1,4 @@
-package com.lukaslechner.coroutineusecasesonandroid.playground.exceptionhandling
+package com.bohdanov.coroutines.exceptionhandling
 
 import kotlinx.coroutines.*
 
@@ -10,11 +10,16 @@ fun main() {
 
     val scope = CoroutineScope(Job())
 
-    scope.launch(exceptionHandler) {
+//    scope.launch(exceptionHandler) {
+    scope.launch {
         launch {
             println("Starting coroutine 1")
             delay(100)
+//            try {
             throw RuntimeException()
+//            }catch (ex:Exception){
+//                println("exception: $ex")
+//            }
         }
         launch {
             println("Starting coroutine 2")

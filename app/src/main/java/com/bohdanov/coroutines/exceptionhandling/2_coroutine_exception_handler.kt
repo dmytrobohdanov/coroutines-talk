@@ -11,7 +11,7 @@ fun main() {
     val scope = CoroutineScope(Job())
 
     scope.launch {
-        CancellationException()
+        throw CancellationException()
         launch(exceptionHandler) {
             functionThatThrowsIt()
         }

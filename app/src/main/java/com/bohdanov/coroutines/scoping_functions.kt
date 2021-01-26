@@ -43,7 +43,7 @@ fun main() {
 //
 //        val parallelJob = doSomeTasks()
 //
-//        //println("Is coroutineJob a child of scopeJob? => ${scopeJob.children.contains(parallelJob)}")
+//        println("Is parallelJob a child of scopeJob? => ${scopeJob.children.contains(parallelJob)}")
 //
 //
 //        launch {
@@ -55,7 +55,7 @@ fun main() {
 //
 //    Thread.sleep(1000)
 //}
-//suspend fun doSomeTasks() = supervisorScope {
+//suspend fun doSomeTasks() = coroutineScope {
 //    launch {
 //        println("Starting Task 1")
 //        delay(100)
