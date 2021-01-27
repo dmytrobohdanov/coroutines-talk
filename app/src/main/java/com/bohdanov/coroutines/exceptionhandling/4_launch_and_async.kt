@@ -10,12 +10,35 @@ fun main() {
 
     val scope = CoroutineScope(Job() + exceptionHandler)
 
-    scope.async {
-        val deferred = async {
-            delay(200)
-            throw RuntimeException()
-        }
+
+    // 1
+    val deferred = scope.async {
+        delay(200)
+        throw RuntimeException()
     }
+
+    // 2
+//    scope.launch {
+//        deferred.await()
+//    }
+
+
+    // 3
+//    scope.launch {
+//        val deferred = async {
+//            delay(200)
+//            throw RuntimeException()
+//        }
+//    }
+
+
+    // 4
+//    scope.async {
+//        val deferred = async {
+//            delay(200)
+//            throw RuntimeException()
+//        }
+//    }
 
     Thread.sleep(1000)
 
