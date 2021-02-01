@@ -6,18 +6,39 @@ import kotlinx.coroutines.launch
 
 fun main() {
     val scope = CoroutineScope(Job())
-
-    try {
-        scope.launch {
-            functionThatThrowsIt()
+// 1
+    scope.launch {
+        try {
+            functionThatThrowsException()
+        } catch (e: Exception) {
+            println("Caught: $e")
         }
-    } catch (e: Exception) {
-        println("Caught: $e")
     }
+
+
+//     2
+//    try {
+//        scope.launch {
+//            functionThatThrowsException()
+//        }
+//    } catch (e: Exception) {
+//        println("Caught: $e")
+//    }
+
+    // 3
+//    scope.launch {
+//        try {
+//            launch {
+//                functionThatThrowsException()
+//            }
+//        } catch (e: Exception) {
+//            println("Caught: $e")
+//        }
+//    }
 
     Thread.sleep(100)
 }
 
-fun functionThatThrowsIt() {
+fun functionThatThrowsException() {
     throw RuntimeException()
 }

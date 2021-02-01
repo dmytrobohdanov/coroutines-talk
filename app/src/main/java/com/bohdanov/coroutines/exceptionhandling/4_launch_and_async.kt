@@ -2,7 +2,7 @@ package com.bohdanov.coroutines.exceptionhandling
 
 import kotlinx.coroutines.*
 
-fun main() {
+fun main() = runBlocking {
 
     val exceptionHandler = CoroutineExceptionHandler { context, exception ->
         println("Caught $exception in CoroutineExceptionHandler")
@@ -10,14 +10,11 @@ fun main() {
 
     val scope = CoroutineScope(Job() + exceptionHandler)
 
-
-    // 1
-    val deferred = scope.async {
-        delay(200)
-        throw RuntimeException()
-    }
-
-    // 2
+//    val deferred = scope.async {
+//        delay(200)
+//        throw RuntimeException()
+//    }
+//
 //    scope.launch {
 //        deferred.await()
 //    }
@@ -25,7 +22,7 @@ fun main() {
 
     // 3
 //    scope.launch {
-//        val deferred = async {
+//        async {
 //            delay(200)
 //            throw RuntimeException()
 //        }
@@ -33,12 +30,12 @@ fun main() {
 
 
     // 4
-//    scope.async {
-//        val deferred = async {
-//            delay(200)
-//            throw RuntimeException()
-//        }
-//    }
+    scope.async {
+        async {
+            delay(200)
+            throw RuntimeException()
+        }
+    }
 
     Thread.sleep(1000)
 

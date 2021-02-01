@@ -10,11 +10,31 @@ fun main() {
 
     val scope = CoroutineScope(Job())
 
-    scope.launch {
+    // 1
+//    scope.launch(exceptionHandler) {
+//        functionThatThrowsException()
+//    }
+
+
+    // 2.1
+//    scope.launch(exceptionHandler) {
+//        launch {
+//            functionThatThrowsException()
+//        }
+//    }
+
+    // 2.2
+//    scope.launch {
+//        launch(exceptionHandler) {
+//            functionThatThrowsException()
+//        }
+//    }
+
+    // 3
+    scope.launch(exceptionHandler) {
         throw CancellationException()
-        launch(exceptionHandler) {
-            functionThatThrowsIt()
-        }
+
+        functionThatThrowsException()
     }
 
     Thread.sleep(100)

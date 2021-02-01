@@ -1,12 +1,9 @@
 package com.bohdanov.coroutines.exceptionhandling
 
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.*
 
 
-fun main() = runBlocking<Unit>() {
-
+fun main() = runBlocking {
     try {
         doSomeThingSuspend()
     } catch (e: Exception) {
@@ -16,9 +13,14 @@ fun main() = runBlocking<Unit>() {
 }
 
 private suspend fun doSomeThingSuspend() {
-    coroutineScope {
-        launch {
+    supervisorScope {
+        val deferred = async {
             throw RuntimeException()
+        }
+        launch {
+            deferred.await()
         }
     }
 }
+
+
